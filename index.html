@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+   <style>
+       body{
+           margin: 0px;
+           height: 0px;
+       }
+       #mycanvas{
+           background-image: url("images/bg_day.png");
+       }
+       #myland,#myup,#mydown,#mybird{
+           display: none;
+       }
+       #music, #score,#stop,#begun,#quiet{
+           width: 60px;
+           height: 40px;
+           position:absolute;
+           border-radius: 10px;
+           top: 15px;
+       }
+       #began_game, #score,#over,#registered,#second,#oversecond,#mybutton{
+           line-height: 40px;
+           text-align: center;
+           font-family: "微软雅黑";
+           color: white;
+       }
+       #began_game,#over,#registered,#second,#oversecond{
+           width: 140px;
+           height: 40px;
+           position:absolute;
+           border-radius: 10px;
+           background-color: #ffdeb1;
+           margin-left: 170px;
+           top:480px;
+           color: black;
+           font-size:22px;
+           cursor: pointer;
+       }
+       #registered{
+           top:550px;
+       }
+       #second,#oversecond{
+           top:410px;
+       }
+       #music,#quiet{
+           margin-left:420px;
+           background-image: url("images/sound1.png");
+           cursor: pointer;
+       }
+       #quiet{
+           background-image: url("images/quiet.png");
+           display: none;
+       }
+       #score{
+           margin-left:580px;
+       }
+       #stop,#begun{
+           margin-left:810px;
+           cursor: pointer;
+       }
+       #stop{
+           background-image: url("images/stop.png");
+           display: block;
+       }
+       #begun{
+           display: none;
+           background-image: url("images/begun.png");
+       }
+       #to_game,#over_game{
+           width: 470px;
+           height:620px;
+           margin-left: 410px;
+           position:absolute;
+           top: 10px;
+       }
+       #to_game{
+           background-image: url("images/bg_bgun.png");
+           z-index: 1;
+           display:block;
+       }
+       #over_game{
+           background-image: url("images/over.png");
+           z-index:2;
+           display:none;
+       }
+       #user,#gamesecond{
+           width:400px;
+           height:250px;
+           position:absolute;
+           border-radius: 10px;
+           background-color: #ffdeb1;
+           margin-left:450px;
+           z-index:100;
+           top:150px;
+           font-family: "微软雅黑";
+           color:black;
+           font-size: 22px;
+           display: none;
+       }
+       #myname{
+           position:absolute;
+           margin-left: 80px;
+           top:80px;
+
+       }
+       #myname>input{
+           height: 25px;
+       }
+       #mybutton{
+           width: 80px;
+           height: 40px;
+           position:absolute;
+           margin-left:160px;
+           top:180px;
+           border: 0px;
+           background-color: white;
+           color: black;
+           font-size: 22px;
+           border-radius: 10px;
+           cursor:pointer;
+       }
+       #gamename,#gamescore,#gamebonus{
+           position:absolute;
+           margin-left: 80px;
+       }
+       #gamename{
+           top:60px;
+       }
+       #gamescore{
+           top:110px;
+       }
+       #gamebonus{
+           top:160px;
+       }
+       #away{
+           width: 50px;
+           height: 50px;
+           background-image: url("images/quxiao.png");
+           margin-left:350px;
+           cursor: pointer;
+       }
+   </style>
+</head>
+<body>
+     <div>
+    <audio src="images/bgandio.mp3" id="bgmusic" loop="loop"></audio>
+    <section id="to_game">
+        <div id="began_game" onclick="gamebegan()" >开始游戏</div>
+        <div id="registered" onclick="myregistered()" >登录/注册</div>
+        <div id="second" onclick="mysecond()" >查看排行</div>
+    </section>
+    <section id="user">
+            <form action="" method="get">
+                <span id="myname">用户名:<input type="text" id="username" autofocus="autofocus"/></span>
+                <button id="mybutton" type="button" onclick="saveUser();">登录</button>
+            </form>
+    </section>
+     <section id="gamesecond">
+                  <div id="away" onclick="myaway()"  ></div>
+                 <span id="gamename">用户名:</span>
+                 <span id="gamescore">分 &nbsp;&nbsp;数：</span>
+                  <span id="gamebonus">排 &nbsp;&nbsp;名：</span>
+     </section>
+    <div id="music" onclick="mymusic()" ></div>
+     <div id="quiet" onclick="myquiet()" ></div>
+    <div id="score"><span>分数：<span id="myscore">0</span></span></div>
+    <div id="stop" onclick="mystop()" ></div>
+     <div id="begun" onclick="mybegun()" ></div>
+    <canvas width="470" height="620" style=" margin: 0px; margin-left:400px;border:10px solid #ffdeb1;"  id="mycanvas" ></canvas>
+    <img src="images/pipe_down.png" alt="" id="mydown" />
+    <img src="images/pipe_up.png" alt="" id="myup" />
+    <img src="images/land3.png" alt=""  id="myland"/>
+    <img src="images/birdall.png" alt=""  id="mybird"/>
+     <section id="over_game">
+             <div id="over" onclick="mygameover()" >再玩一次</div>
+            <div id="oversecond" onclick="myoversecond()" >查看排行</div>
+      </section>
+     </div>
+<script src="js/flappyjs.js" ></script>
+</body>
+</html>
